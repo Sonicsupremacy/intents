@@ -2,4 +2,9 @@ language: sl
 intents:
   HassLightSet:
     data:
-    - sentences: []
+      - sentences:
+        - "<set> (svetlost | moč) luči <area> na <brightness>"
+        slots:
+          name: "all"
+      - sentences:
+        - "<set> (svetlost | moč) <name> na <brightness>"

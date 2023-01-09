@@ -2,4 +2,5 @@ language: sl
 intents:
   HassTurnOff:
     data:
-    - sentences: []
+    - sentences:
+      - "<turn_off> <name>"
