@@ -3,7 +3,22 @@ intents:
   HassTurnOn:
     data:
       - sentences:
-          - "<deschide> [toate] <lumina> [<din>] <area>"
-          - "<deschide> [<din>] <area> [toate] <lumina>"
+          - "<porneste> [<lumina>] <name> [<din_zona>]"
         slots:
-          domain: "light"
+          domain: light
+        requires_context:
+          domain: light
+        response: light
+      - sentences:
+          - "<porneste> (<lumina> | [toate] <luminile>) [<din>] <area>"
+          - "<porneste> [<din>] <area> (<lumina> | [toate] <luminile>)"
+        slots:
+          domain: light
+        response: lights_area
+      - sentences:
+          - "<porneste> (<lumina> | [toate] <luminile>)"
+        slots:
+          domain: light
+        requires_context:
+          area:
+        response: lights_area

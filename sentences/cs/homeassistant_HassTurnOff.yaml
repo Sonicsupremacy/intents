@@ -2,6 +2,11 @@ language: cs
 intents:
   HassTurnOff:
     data:
-      - sentences: 
+      - sentences:
           - "<vypnout> {name}"
           - "{name} <vypnout>"
+        excludes_context:
+          domain:
+            - cover
+            - fan
+            - light

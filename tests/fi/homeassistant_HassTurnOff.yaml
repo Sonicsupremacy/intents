@@ -1,0 +1,11 @@
+language: fi
+tests:
+  - sentences:
+      - "kytke päältä kattotuuletin"
+      - "kytke kattotuuletin päältä"
+      - "pysäytä kattotuuletin"
+    intent:
+      name: HassTurnOff
+      slots:
+        name: Kattotuuletin
+    response: "Kytkettiin pois päältä fan"

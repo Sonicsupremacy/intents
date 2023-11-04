@@ -1,6 +1,41 @@
 language: hr
 tests:
-- sentences: []
-  intent:
-    name: HassClimateSetTemperature
-    slots: {}
+  - sentences:
+      - postavi temperaturu na 30 stupnjeva
+    intent:
+      name: HassClimateSetTemperature
+      slots:
+        temperature: 30
+    response: "Temperatura je postavljena"
+
+  - sentences:
+      - postavi temperaturu na 30° C
+    intent:
+      name: HassClimateSetTemperature
+      slots:
+        temperature: 30
+        temperature_unit: celsius
+    response: "Temperatura je postavljena"
+
+  - sentences:
+      - podesi temperaturu u spavaćoj sobi na 50 stupnjeva Celzijusa
+    intent:
+      name: HassClimateSetTemperature
+      slots:
+        area:
+          - spavaćoj sobi
+        temperature: 50
+        temperature_unit: celsius
+    response: "Temperatura je postavljena"
+
+  - sentences:
+      - promijeni temperaturu u spavaćoj sobi na 21 stupanj celzija
+      - promijeni temperaturu u spavaćoj sobi na 21 celzijev stupanj
+    intent:
+      name: HassClimateSetTemperature
+      slots:
+        area:
+          - spavaćoj sobi
+        temperature: 21
+        temperature_unit: celsius
+    response: "Temperatura je postavljena"

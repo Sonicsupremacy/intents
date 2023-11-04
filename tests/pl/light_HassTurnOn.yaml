@@ -1,10 +1,25 @@
 language: pl
 tests:
   - sentences:
-      - "Zapal światło w kuchni"
-      - "Zapal światła w kuchni"
+      - Zapal światło w kuchni
+      - Zapal wszystkie światła w kuchni
+      - Oświeć światła w kuchni
     intent:
-      name: "HassTurnOn"
+      name: HassTurnOn
       slots:
-        area: "kitchen"
-        domain: "light"
+        area:
+          - Kuchnia
+          - Kuchni
+        domain: light
+    response: Włączono światło w kuchni
+
+  - sentences:
+      - Zapal wszystkie światła
+      - Włącz wszystkie światła
+    intent:
+      name: HassTurnOn
+      slots:
+        area: all
+        name: all
+        domain: light
+    response: Włączono wszystkie światła

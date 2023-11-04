@@ -2,5 +2,11 @@ language: uk
 intents:
   HassTurnOn:
     data:
-    - sentences:
-        - "<ввімкни> <name>"
+      - sentences:
+          - <ввімкни> <name>
+      - sentences:
+          - <відкрий> <name>
+        response: cover
+      - sentences:
+          - <відкрий> <name> <area>
+        response: cover_area

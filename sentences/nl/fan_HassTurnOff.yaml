@@ -3,15 +3,26 @@ intents:
   HassTurnOff:
     data:
       - sentences:
-          - "<doe> [alle] <ventilator> [<naar>] uit in <area>"
-          - "<doe> [alle] <ventilator> in <area> [<naar>] uit"
-          - "<doe> (alle | in) <area> <ventilator> [<naar>] uit"
+          - "[<doe>] [<alle>] <ventilator> [<naar>] uit <in> <area>"
+          - "<zou> [<alle>] <ventilator> [<naar>] (uit willen |uit kunnen |uit[ ])<doe> <in> <area>"
+          - "[<doe>] [<alle>] <ventilator> <in> <area> [<naar>] uit"
+          - "<zou> [<alle>] <ventilator> <in> <area> [<naar>] (uit willen |uit kunnen |uit[ ])<doe>"
+          - "[<doe>] [(<alle>|<in>)] <area>[ ]<ventilator> [<naar>] uit"
+          - "<zou> [(<alle>|<in>)] <area>[ ]<ventilator> [<naar>] (uit willen |uit kunnen |uit[ ])<doe>"
+          - "<zou> [(<alle>|<in>)] [<area>[ ]]<ventilator> [<in> <area>] [willen|kunnen] (uit[ ](zetten|doen)|uitschakelen)"
+          - "[(<alle>|<in>)] [<area>[ ]]<ventilator> [<in> <area>] (uit[ ](zetten|doen)|uitschakelen)"
+        response: fans_area
         slots:
           domain: "fan"
           name: "all"
+
       - sentences:
-          - "<doe> (overal | alle) <ventilator> uit"
-          - "<doe> <ventilator> overal uit"
+          - "[<doe>] ((overal|<alle>) <ventilator>|<ventilator> overal) uit"
+          - "<zou> ((overal|<alle>) <ventilator>|<ventilator> overal) (uit willen |uit kunnen |uit[ ])<doe>"
+          - "<zou> ((overal|<alle>) <ventilator>|<ventilator> overal) [willen|kunnen] (uit[ ](zetten|doen)|uitschakelen)"
+          - "((overal|<alle>) <ventilator>|<ventilator> overal) (uit[ ](zetten|doen)|uitschakelen)"
+        response: "fan_all"
         slots:
           domain: "fan"
           area: "all"
+          name: "all"

@@ -3,9 +3,17 @@ intents:
   HassClimateGetTemperature:
     data:
       - sentences:
-          - "ce <temperatura> <este> [<in> <area>]"
-          - "[care <este>] (temperatura | temperatură) [<din> <area>]"
-          - "(cate | câte | cite | cîte) grade sunt [<in> <area>]"
-          - "(cat | cât) de (cald | frig | rece | racoare | răcoare) <este> [<in> <area>]"
-          - "(cat | cât) <este> de (cald | frig | rece | racoare | răcoare) [<in> <area>]"
-          - "<este> (cald | frig | rece | racoare | răcoare) [<in> <area>]"
+          - "ce <temperatura> <este> <in> <area>"
+          - "(care | <cat>) <este> <temperatura> <din_zona>"
+          - "<cate> grade sunt <in> <area>"
+          - "<cat_quant> de <cald_frig> <este> <in> <area>"
+          - "<cat_quant> <este> de <cald_frig> <in> <area>"
+          - "<este> <cald_frig> <in> <area>"
+      - sentences:
+          - "ce <temperatura> <este>"
+          - "(care | <cat>) <este> <temperatura>"
+          - "<cate> grade sunt"
+          - "<cat_quant> de <cald_frig> <este>"
+          - "<cat_quant> <este> de <cald_frig>"
+        requires_context:
+          area:

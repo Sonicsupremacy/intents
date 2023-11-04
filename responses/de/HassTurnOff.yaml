@@ -1,0 +1,10 @@
+language: de
+responses:
+  intents:
+    HassTurnOff:
+      default: "{{ slots.name }} ausgeschaltet"
+      light: "Licht ausgeschaltet"
+      fan_all: "Die Ventilatoren sind ausgeschaltet"
+      cover: "geschlossen"
+      close_all: "alle geschlossen"
+      lock: "entsperrt"

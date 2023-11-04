@@ -2,5 +2,12 @@ language: ca
 intents:
   HassTurnOn:
     data:
-    - sentences:
-      - "<engega> <name> [en marxa]"
+      - sentences:
+          - <engega> <name> [en marxa]
+        excludes_context:
+          domain:
+            - cover
+            - lock
+      - sentences:
+          - <obre> <name> [<area>]
+        response: cover_area

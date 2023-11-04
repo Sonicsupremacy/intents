@@ -6,7 +6,7 @@ responses:
     no_domain: "{{ area }} não contém {{ domain }}."
     no_device_class: "{{ area }} não contém {{ device_class }}."
     no_entity: "Não existe nenhum dispositivo ou entidade com o nome {{ entity }}."
-    handle_error: "Ocurreu um erro inesperado ao processar o pedido."
+    handle_error: "Ocorreu um erro inesperado ao processar o pedido."
 lists:
   color:
     values:
@@ -52,22 +52,85 @@ lists:
       to: 100
   temperature_unit:
     values:
-      - "celsius"
-      - in: "c"
-        out: "celsius"
-      - "centígrados"
-      - in: "c"
+      - in: "(celsius|c|centígrados)"
         out: "celsius"
       - "fahrenheit"
       - in: "f"
         out: "fahrenheit"
+  brightness_level:
+    values:
+      - in: (max | maximum | highest)
+        out: 100
+      - in: ( minimum | lowest)
+        out: 1
+  on_off_states:
+    values:
+      - in: "(ligado|ligada|ligados|ligadas)"
+        out: "on"
+      - in: "(desligado|desligada|desligado|desligadas)"
+        out: "off"
+  on_off_domains:
+    values:
+      - in: (luz|luzes|lampada|lampadas)
+        out: light
+      - in: (ventoinha|ventoinhas)
+        out: fan
+      - in: (interruptor|interruptores|tomada|tomadas)
+        out: switch
+  cover_states:
+    values:
+      - in: "(aberto|aberta|abertas)"
+        out: "open"
+      - in: "(fechado|fechada|fechadas)"
+        out: "closed"
+      - in: "a abrir"
+        out: "opening"
+      - in: "a fechar"
+        out: "closing"
+  cover_classes:
+    values:
+      - in: (toldo[s]|tolde[s])
+        out: awning
+      - in: persiana[s]
+        out: blind
+      - in: cortina[s]
+        out: curtain
+      - in: porta[s]
+        out: door
+      - in: (porta[s] da garagem|portão|portões)
+        out: garage
+      - in: (portão|portões)
+        out: gate
+      - in: (toldo[s]|tolde[s])
+        out: shade
+      - in: persiana[s]
+        out: shutter
+      - in: janela[s]
+        out: window
+  lock_states:
+    values:
+      - in: "(trancad[a[s]|o[s]])"
+        out: "locked"
+      - in: "(destrancad[a[s]|o[s]])"
+        out: "unlocked"
+  shopping_list_item:
+    wildcard: true
+
 expansion_rules:
-  nome: "[(o | a)] {name}"
-  zona: "[(o | a)] {area}"
-  na_zona: "(no | na | do | da) {area}"
-  qual: "(qual | qual é)"
-  brilho: "{brightness} [porcento]"
-  temperatura: "{temperature} [graus] [{temperature_unit}]"
+  muda: "(põe|ponha|muda|altera|coloca|deixa|pôr|mudar|alterar|colocar|deixar)"
+  liga: "(liga|ligue|acende|acenda|ligar|acender|ativa|ativar|ative)"
+  desliga: "(desliga|desligue|apaga|apague|desligar|apagar)"
+  abre: "(abra|abre|abrir)"
+  fecha: "(fecha|feche|fechar)"
+  nome: "[(o|os|a|as)] {name}"
+  zona: "[(o|os|a|as)] {area}"
+  na_zona: "(no|na|da|do) {area}"
+  esta: "(está|estão|existe|existem)"
+  qual: "(que|qual|qual é|quais)"
+  brilho: "{brightness}[%| porcento]"
+  temperatura: "{temperature}[°| graus] [{temperature_unit}]"
+  algum: "(algum|alguma|alguns|algumas)"
+
 skip_words:
   - "por favor"
   - "se faz favor"

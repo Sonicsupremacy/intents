@@ -1,7 +1,12 @@
-language: "ru"
+language: ru
 intents:
   HassTurnOn:
     data:
       - sentences:
-          - "<turn_on> <name>"
-
+          - <turn_on> <name>
+      - sentences:
+          - <open> <name>
+        response: cover
+      - sentences:
+          - <open> <name> <area>
+        response: cover_area

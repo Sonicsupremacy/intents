@@ -1,9 +1,23 @@
-language: "es"
+language: es
 tests:
   - sentences:
-      - "enciende el ventilador de techo"
-      - "enciende ventilador de techo"
+      - enciende el ventilador de techo
+      - encienda ventilador de techo
+      - encender ventilador de techo
+      - conecta ventilador de techo
+      - por favor conecte ventilador de techo
+      - podrías conectar ventilador de techo
     intent:
-      name: "HassTurnOn"
+      name: HassTurnOn
       slots:
-        name: "fan.ventilador_techo"
+        name: Ventilador de techo
+    response: "Activación efectuada"
+
+  - sentences:
+      - enciende luces del rincón de juegos
+      - activa rincón de juegos
+    intent:
+      name: HassTurnOn
+      slots:
+        name: Rincón de juegos
+    response: "Activación efectuada"

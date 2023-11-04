@@ -40,30 +40,88 @@ lists:
       to: 100
   temperature_unit:
     values:
-      - "(celsius|centigradi)"
+      - "(celsius | centigradi)"
       - in: "c"
         out: "celsius"
       - "fahrenheit"
       - in: "f"
         out: "fahrenheit"
+  on_off_states:
+    values:
+      - in: "(acces(o|i|a|e)|attiv(o|i|a|e))"
+        out: "on"
+      - in: "(spent(o|i|a|e)|disattiv(o|i|a|e))"
+        out: "off"
+  on_off_domains:
+    values:
+      - in: "luc(e|i)"
+        out: light
+      - in: "(ventol(a|e)|ventilator(e|i)|ventilazione|climatizzator(e|i)|condizionator(e|i))"
+        out: fan
+      - in: "(interruttor(e|i)|pres(a|e))"
+        out: switch
+  cover_states:
+    values:
+      - in: "apert(a|o|e)"
+        out: "open"
+      - in: "chius(a|o|e)"
+        out: "closed"
+      - in: "in apertura"
+        out: "opening"
+      - in: "in chiusura"
+        out: "closing"
+  cover_classes:
+    values:
+      - in: "tend(a|e) da sole"
+        out: awning
+      - in: "persian(a|e)"
+        out: blind
+      - in: "tend(a|e)"
+        out: curtain
+      - in: "port(a|e)"
+        out: door
+      - in: "<garage>"
+        out: garage
+      - in: "cancell(o|i)"
+        out: gate
+      - in: "venezian(a|e)"
+        out: shade
+      - in: "tapparell(a|e)"
+        out: shutter
+      - in: "finestr(a|e)"
+        out: window
+  lock_states:
+    values:
+      - in: "chiusa"
+        out: "locked"
+      - in: "aperta"
+        out: "aperto"
+
 expansion_rules:
-  the: "(il | lo | la | i | gli | le | l')"
-  in: "(in | nel | nello | nella | nei | negli | nelle)"
-  of: "(del | dello | della | dei | degli | delle)"
-  to: "(a | al | allo | alla | agli | alle)"
+  the: "(l(o|a|e) | i[l] | gli | l')"
+  in: "(in | ne[i|gli|l[lo|la|le]])"
+  of: "(de[l[lo|la|le]]|i|gli|di)"
+  to: "a[l[lo|la|le] | gli]"
   name: "{name}"
   area: "{area}"
-  what_is: "(qual è | quale è | quanto è | quant'è | come è | com'è)"
-  brightness: "{brightness} [percento]"
-  turn_on: "(accendi | accendere | attiva | attivare)"
-  turn_off: "(spegni | spegnere | disattiva | disattivare)"
-  open: "(apri | aprire | alza | alzare)"
-  close: "(chiudi | chiudere | abbassa | abbassare)"
+  what_is: "(qual[e] è | quant(o |')è | com(e |')è | che)"
+  brightness: "{brightness}[%| percento]"
+  turn_on: "(accend(i|ere) | attiv(a|are))"
+  turn_off: "(spegn(i|ere) | disattiv(a|are))"
+  open: "(apr(i|ire) | alz(a|are))"
+  close: "(chiud(i|ere) | abbass(a|are))"
+  set: "(impost(a|are) | cambi(a|are) | mett(i|ere) | modific(a|are))"
   temp: "[la] (temperatura)"
-  temperature: "{temperature} [gradi] [{temperature_unit}]"
-  fan: "(ventola | ventilatore | climatizzatore | condizionatore | ventole | ventilatori | climatizzatori | condizionatori)"
+  temperature: "{temperature}[°| gradi] [{temperature_unit}]"
+  cover: "(tend(a|e)[ da sole]|serrand(a|e)|tapparell(a|e)|persian(a|e)|port(a|e)|saracinesc(a|he)|venezian(a|e)|cancell(o|i)|finestr(a|e))"
+  climate: "(clima|climatizzator(e|i)|condizionator(e|i)|aria condizionata)"
+  fan: "(ventol(a|e) | ventilator(e|i) | ventilazione )"
+  all: "tutt(o|e|i|a)"
+  garage: "(serrand(a|e) | port(a|e) [basculant(e|i)|de(l|i) garage] | saracinesc(a|he))"
 skip_words:
   - "per favore"
   - "potresti"
   - "puoi"
+  - "puoi dirmi"
+  - "dimmi"
   - "grazie"

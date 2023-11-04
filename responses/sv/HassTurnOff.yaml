@@ -1,0 +1,11 @@
+language: sv
+responses:
+  intents:
+    HassTurnOff:
+      default: "Slog av {{ slots.name }}"
+      lights: "Släckte {{ slots.name }}"
+      lights_area: "Släckte lamporna i {{ slots.area }}"
+      fans_area: "Stoppade fläktarna i {{ slots.area }}"
+      cover: "Stängde {{ slots.name }}"
+      cover_area: "Stängde i {{ slots.area }}"
+      cover_device_class: "Stängde {{ slots.device_class }}"

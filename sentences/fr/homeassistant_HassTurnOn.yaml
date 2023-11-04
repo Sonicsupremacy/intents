@@ -3,5 +3,11 @@ intents:
   HassTurnOn:
     data:
       - sentences:
-          - "<allume> <name>"
-          - "<allume> <name> [dans|du|de] <area>"
+          - <allume> <name>
+          - <allume> <name> <dans> <area>
+      - sentences:
+          - <ouvre> <name>
+        response: covers
+      - sentences:
+          - <ouvre> <name> <dans> <area>
+        response: covers

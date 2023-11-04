@@ -1,20 +1,26 @@
 language: vi
 areas:
-- name: Kitchen
-  id: kitchen
-- name: Living Room
-  id: living_room
-- name: Bedroom
-  id: bedroom
-- name: Garage
-  id: garage
+  - name: phòng bếp
+    id: kitchen
+  - name: phòng khách
+    id: living_room
+  - name: Phòng ngủ
+    id: bedroom
+  - name: cửa cuốn
+    id: garage
 entities:
-- name: Bedroom Lamp
-  id: light.bedroom_lamp
-  area: bedroom
-- name: Kitchen Switch
-  id: switch.kitchen
-  area: kitchen
-- name: Ceiling Fan
-  id: fan.ceiling
-  area: living_room
+  - name: đèn bàn
+    id: light.bedroom_lamp
+    area: bedroom
+  - name: công tắc bếp
+    id: switch.kitchen
+    area: kitchen
+  - name: quạt trần
+    id: fan.ceiling
+    area: living_room
+  - name: điều hòa phòng khách
+    id: climate.living_room
+    area: living_room
+  - name: rèm cửa sổ
+    id: cover.bedroom_window
+    area: bedroom

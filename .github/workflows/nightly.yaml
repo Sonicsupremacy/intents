@@ -15,11 +15,12 @@ jobs:
   nightly:
     name: Nightly
     runs-on: ubuntu-latest
+    if: ${{ github.repository == 'home-assistant/intents' }}
     permissions:
       contents: write
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v3.2.0
+        uses: actions/checkout@v4
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v4
@@ -27,7 +28,9 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install dependencies
-        run: script/setup
+        run: |
+          script/setup && \
+          python3 -m pip install build
 
       - name: Build nightly Python package
         run: script/package
@@ -36,5 +39,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: package
-          path: package/dist/*.tar.gz
+          path: package/dist/*.whl
           if-no-files-found: error

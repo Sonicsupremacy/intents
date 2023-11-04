@@ -3,4 +3,11 @@ intents:
   HassTurnOff:
     data:
       - sentences:
-          - "<inchide> <name>"
+          - "<opreste> <name> [<din_zona>]"
+        excludes_context:
+          domain:
+            - light
+            - cover
+            - scene
+            - script
+            - sensor

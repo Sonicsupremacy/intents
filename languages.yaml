@@ -1,16 +1,26 @@
+af:
+  nativeName: Afrikaans
 ar:
   nativeName: العربية
   isRTL: true
+  leaders:
+    - Ahmed-farag36
+    - Natfaji
 bg:
   nativeName: Български
   leaders:
     - hristo-atanasov
+bn:
+  nativeName: বাংলা
 ca:
   nativeName: Català
+  leaders:
+    - duhow
 cs:
   nativeName: Čeština
   leaders:
     - halecivo
+    - schizza
 da:
   nativeName: Dansk
   leaders:
@@ -19,22 +29,49 @@ da:
 de:
   nativeName: Deutsch
   leaders:
-    - Scorpoon
+    - easterapps
+    - mib1185
+de-CH:
+  nativeName: Schwyzerdütsch
+  leaders:
+    - dontinelli
 el:
   nativeName: Ελληνικά
   leaders:
     - dsimop
 en:
   nativeName: English
+  leaders:
+    - tetele
 es:
   nativeName: Español
+  leaders:
+    - davefx
+et:
+  nativeName: Eesti
+eu:
+  nativeName: Euskara
 fa:
   nativeName: فارسی
   isRTL: true
+fi:
+  nativeName: Suomi
+  leaders:
+    - Arkkimaagi
 fr:
   nativeName: Français
   leaders:
-    - benjaminlecouteux
+    - flexy2dd
+fr-CA:
+  nativeName: Français (Canada)
+  leaders:
+    - charlesdagenais
+gl:
+  nativeName: Galician
+  leaders:
+    - cibernox
+gu:
+  nativeName: Gujarati
 he:
   nativeName: עברית
   isRTL: true
@@ -45,12 +82,18 @@ hi:
   nativeName: हिन्दी
 hr:
   nativeName: Hrvatski
+  leaders:
+    - spuljko
 hu:
   nativeName: Magyar
   leaders:
     - nagyrobi
+id:
+  nativeName: Bahasa Indonesia
 is:
   nativeName: íslenska
+  leaders:
+    - thdg
 it:
   nativeName: Italiano
   leaders:
@@ -58,8 +101,18 @@ it:
     - xraver
 ka:
   nativeName: ქართული
+  leaders:
+    - hertzg
 kn:
   nativeName: ಕನ್ನಡ
+ko:
+  nativeName: 한국어
+  leaders:
+    - limitless00net
+lb:
+  nativeName: Lëtzebuergesch
+  leaders:
+    - mojikosu
 lt:
   nativeName: Lietuvių
   leaders:
@@ -70,10 +123,20 @@ lv:
     - makstech
 ml:
   nativeName: മലയാളം
+  leaders:
+    - arunshekher
+mn:
+  nativeName: монгол хэл
+  leaders:
+    - chuk-a
 ms:
   nativeName: Bahasa Melayu
+  leaders:
+    - zubir2k
 nb:
   nativeName: Norsk Bokmål
+  leaders:
+    - LaStrada
 nl:
   nativeName: Nederlands
   leaders:
@@ -82,10 +145,20 @@ pl:
   nativeName: Polski
   leaders:
     - Uriziel01
+    - witold-gren
 pt:
   nativeName: Português
+  leaders:
+    - joaorgoncalves
+    - nikito7
+    - abmantis
+pt-br:
+  nativeName: Português (Brasil)
 ro:
   nativeName: Română
+  leaders:
+    - tetele
+    - gabimarchidan
 ru:
   nativeName: Русский
   leaders:
@@ -102,12 +175,16 @@ sr:
     - cvladan
 sv:
   nativeName: Svenska
+  leaders:
+    - larsdunemark
 sw:
   nativeName: Kiswahili
 te:
   nativeName: తెలుగు
 tr:
   nativeName: Türkçe
+  leaders:
+    - alpdmrel
 uk:
   nativeName: Українська
   leaders:
@@ -118,5 +195,15 @@ ur:
     - AalianKhan
 vi:
   nativeName: Tiếng Việt
-zh:
-  nativeName: 中文
+  leaders:
+    - dinhchinh82
+zh-cn:
+  nativeName: 简体中文
+  leaders:
+    - al-one
+zh-hk:
+  nativeName: 繁體中文（香港）
+zh-tw:
+  nativeName: 繁體中文（台灣）
+  leaders:
+    - bluefoxlee

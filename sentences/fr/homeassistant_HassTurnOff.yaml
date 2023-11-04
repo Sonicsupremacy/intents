@@ -3,5 +3,11 @@ intents:
   HassTurnOff:
     data:
       - sentences:
-          - "<eteins> <name> [dans|du|de] <area>"
-          - "<eteins> <name>"
+          - <eteins> <name>
+          - <eteins> <name> <dans> <area>
+      - sentences:
+          - <ferme> <name>
+        response: covers
+      - sentences:
+          - <ferme> <name> <dans> <area>
+        response: covers

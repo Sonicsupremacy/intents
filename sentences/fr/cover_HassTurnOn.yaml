@@ -1,0 +1,29 @@
+language: fr
+intents:
+  HassTurnOn:
+    data:
+      - sentences:
+          - <ouvre> <garage>
+        response: cover_device_class
+        slots:
+          device_class: garage
+          domain: cover
+      - sentences:
+          - <ouvre> [tous] (<volets>|<volet>) <dans> <area>
+        response: covers
+        slots:
+          device_class:
+            - blind
+            - curtain
+            - shutter
+          domain: cover
+      - sentences:
+          - <ouvre> tous [les] (<volets>|<volet>)
+        response: cover_device_class
+        slots:
+          name: all
+          device_class:
+            - blind
+            - curtain
+            - shutter
+          domain: cover

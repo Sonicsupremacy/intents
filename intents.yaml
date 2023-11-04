@@ -3,6 +3,7 @@
 # -----------------------------------------------------------------------------
 
 HassTurnOn:
+  supported: true
   domain: homeassistant
   description: "Turns on a device or entity"
   slots:
@@ -32,8 +33,12 @@ HassTurnOn:
     area_device_class:
       - "area"
       - "device_class"
+    domain_device_class:
+      - "domain"
+      - "device_class"
 
 HassTurnOff:
+  supported: true
   domain: homeassistant
   description: "Turns off a device or entity"
   slots:
@@ -50,11 +55,45 @@ HassTurnOff:
       description: "Device class of devices/entities in an area"
       required: false
 
+HassGetState:
+  supported: true
+  domain: homeassistant
+  description: "Gets or checks the state of an entity"
+  slots:
+    name:
+      description: "Name of a device or entity"
+      required: false
+    area:
+      description: "Name of an area"
+      required: false
+    domain:
+      description: "Domain of devices/entities in an area"
+      required: false
+    device_class:
+      description: "Device class of devices/entities in an area"
+      required: false
+    state:
+      description: "Device class of devices/entities in an area"
+      required: false
+  response_variables:
+    state:
+      description: "State of the first entity matched"
+    query.matched:
+      description: "List of states that matched the query and state name"
+    query.unmatched:
+      description: "List of states that matched everything except state name"
+
+HassNevermind:
+  supported: true
+  domain: homeassistant
+  description: "Does nothing. Used to cancel a request"
+
 # -----------------------------------------------------------------------------
 # light
 # -----------------------------------------------------------------------------
 
 HassLightSet:
+  supported: true
   domain: light
   description: "Sets the brightness or color of a light"
   slots:
@@ -72,42 +111,11 @@ HassLightSet:
       required: false
 
 # -----------------------------------------------------------------------------
-# cover
-# -----------------------------------------------------------------------------
-
-HassOpenCover:
-  domain: cover
-  description: "Opens a cover, like a garage door or curtains"
-  slots:
-    name:
-      description: "Name of a device or entity"
-      required: false
-    area:
-      description: "Name of an area"
-      required: false
-    device_class:
-      description: "Device class of devices/entities in an area"
-      required: false
-
-HassCloseCover:
-  domain: cover
-  description: "Closes a cover, like a garage door or curtains"
-  slots:
-    name:
-      description: "Name of a device or entity"
-      required: false
-    area:
-      description: "Name of an area"
-      required: false
-    device_class:
-      description: "Device class of devices/entities in an area"
-      required: false
-
-# -----------------------------------------------------------------------------
 # climate
 # -----------------------------------------------------------------------------
 
 HassClimateSetTemperature:
+  supported: false
   domain: climate
   description: "Sets the desired temperature of a climate device or entity"
   slots:
@@ -125,6 +133,7 @@ HassClimateSetTemperature:
       required: false
 
 HassClimateGetTemperature:
+  supported: false
   domain: climate
   description: "Gets the current temperature of a climate device or entity"
   slots:
@@ -137,3 +146,16 @@ HassClimateGetTemperature:
   response_variables:
     state:
       description: "State of the entity that contains the temperature"
+
+# -----------------------------------------------------------------------------
+# shopping_list
+# -----------------------------------------------------------------------------
+
+HassShoppingListAddItem:
+  supported: true
+  domain: shopping_list
+  description: "Adds an item to the shopping list"
+  slots:
+    item:
+      description: "Item to add"
+      required: true

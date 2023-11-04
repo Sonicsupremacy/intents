@@ -3,4 +3,8 @@ intents:
   HassTurnOn:
     data:
       - sentences:
-          - "<tænd> <navn>"
+          - <tænd> <navn>
+      - sentences:
+          - <åbn> <navn>
+          - <åbn> <navn> <i_på> <område>
+        response: cover

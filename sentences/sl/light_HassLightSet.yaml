@@ -3,7 +3,7 @@ intents:
   HassLightSet:
     data:
       - sentences:
-        - "<set> (svetlost | moč) luči <area> na <brightness>"
+        - "<set> (svetlost | moč) luči v <area> na <brightness>"
         slots:
           name: "all"
       - sentences:

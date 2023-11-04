@@ -1,0 +1,10 @@
+language: ru
+responses:
+  intents:
+    HassTurnOn:
+      default: "Включен {{ slots.name }}"
+      lights_area: "Включен свет в {{ slots.area }}"
+      fans_area: "Включены вентиляторы в {{ slots.area }}"
+      cover: "Открыто {{ slots.name }}"
+      cover_area: "Открыто {{ slots.area }}"
+      cover_device_class: "Открыто {{ slots.device_class }}"

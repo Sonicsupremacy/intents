@@ -1,0 +1,14 @@
+language: lb
+intents:
+  HassTurnOff:
+    data:
+      - sentences:
+          - schalt <name> aus
+          - schalt <name> <area> aus
+          - stopp <name>
+          - <maach> <area> <name> <zou>
+          - <maach> <name> <area> <zou>
+      - sentences:
+          - <maach> <area> (<window> | <garage>) <zou>
+          - <maach> (<window> | <garage>) <area> <zou>
+        response: cover_area

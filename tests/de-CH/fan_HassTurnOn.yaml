@@ -1,0 +1,15 @@
+language: de-CH
+tests:
+  - sentences:
+      - Schalt alli Ventilatore im Wohnzimmer a
+      - Schaut aui Ventilatore im Wohnzimmer y
+    intent:
+      name: HassTurnOn
+      slots:
+        area:
+          - Wohnzimmer
+          - Wohnzemmer
+        domain: fan
+    response:
+      - "Ha d wohnzimmer-Ventilatore yygschaute."
+      - "Ha d wohnzemmer-Ventilatore yygschaute."

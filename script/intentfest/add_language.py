@@ -44,7 +44,7 @@ def run() -> int:
         yaml.dump, sort_keys=False, allow_unicode=True, Dumper=YamlDumper
     )
 
-    intent_schemas = yaml.safe_load(INTENTS_FILE.read_text())
+    intent_schemas = yaml.safe_load(INTENTS_FILE.read_text(encoding="utf-8"))
 
     # Create language directory
     sentence_dir = SENTENCE_DIR / language
@@ -66,7 +66,7 @@ def run() -> int:
         if english_filename.name == "_common.yaml":
             continue
 
-        domain, intent = english_filename.stem.split("_")
+        domain, intent = english_filename.stem.rsplit("_", maxsplit=1)
 
         sentence_info: dict = {
             "sentences": [],
@@ -98,12 +98,12 @@ def run() -> int:
                 "language": language,
                 "responses": {
                     "errors": {
-                        "no_intent": "TODO Sorry, I couldn't understand that",
-                        "no_area": "TODO No area named {{ area }}",
-                        "no_domain": "TODO {{ area }} does not contain a {{ domain }}",
-                        "no_device_class": "TODO {{ area }} does not contain a {{ device_class }}",
-                        "no_entity": "TODO No device or entity named {{ entity }}",
-                        "handle_error": "TODO An unexpected error occurred while handling the intent",
+                        "no_intent": "TODO: Sorry, I couldn't understand that",
+                        "no_area": "TODO: No area named {{ area }}",
+                        "no_domain": "TODO: {{ area }} does not contain a {{ domain }}",
+                        "no_device_class": "TODO: {{ area }} does not contain a {{ device_class }}",
+                        "no_entity": "TODO: No device or entity named {{ entity }}",
+                        "handle_error": "TODO: An unexpected error occurred while handling the intent",
                     },
                 },
                 "lists": {},
@@ -120,7 +120,7 @@ def run() -> int:
         if english_filename.name == "_fixtures.yaml":
             continue
 
-        domain, intent = english_filename.stem.split("_")
+        domain, intent = english_filename.stem.rsplit("_", maxsplit=1)
 
         slots = {}
 
@@ -175,28 +175,30 @@ def run() -> int:
         )
     )
 
+    # Create response files based off English
     english_responses = RESPONSE_DIR / "en"
 
     for english_filename in english_responses.iterdir():
         intent = english_filename.stem
+        with open(english_filename, "r", encoding="utf-8") as english_file:
+            responses = yaml.safe_load(english_file)["responses"]
+
+        # Mark responses as needing translation
+        for intent_responses in responses["intents"].values():
+            for response_key, response_text in intent_responses.items():
+                intent_responses[response_key] = f"TODO: {response_text}"
 
         (response_dir / english_filename.name).write_text(
             yaml_dump(
                 {
                     "language": language,
-                    "responses": {
-                        "intents": {
-                            intent: {
-                                "success": [],
-                            },
-                        },
-                    },
+                    "responses": responses,
                 },
             )
         )
 
     # Update languages.yaml
-    languages = yaml.safe_load(LANGUAGES_FILE.read_text())
+    languages = yaml.safe_load(LANGUAGES_FILE.read_text(encoding="utf-8"))
     languages[language] = {
         "nativeName": args.native_name,
     }

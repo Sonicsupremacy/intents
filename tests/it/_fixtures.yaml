@@ -1,28 +1,61 @@
 language: "it"
 areas:
   - name: "Cucina"
-    id: "cucina"
+    id: cucina
   - name: "Soggiorno"
-    id: "soggiorno"
+    id: soggiorno
   - name: "Camera da Letto"
-    id: "camera_da_letto"
+    id: camera_da_letto
   - name: "Garage"
-    id: "garage"
+    id: garage
   - name: "Bagno"
-    id: "bagno"
+    id: bagno
+  - name: "Esterno"
+    id: esterno
 entities:
+  - name: "Temperatura Esterna"
+    id: sensor.temperatura_esterna
+    area: esterno
+    state: "42"
+    attributes:
+      unit_of_measurement: "°C"
   - name: "Lampada Camera"
-    id: "light.camera_da_letto_lampada"
-    area: "camera_da_letto"
-  - name: "Interruttore Cucina"
-    id: "switch.cucina"
-    area: "cucina"
+    id: light.camera_da_letto_lampada
+    area: camera_da_letto
+    state: "spenta"
+  - name: Interruttore Cucina
+    id: switch.cucina
+    area: cucina
+    state: "on"
   - name: "Ventilatore"
-    id: "fan.ventilatore"
-    area: "soggiorno"
+    id: fan.ventilatore
+    area: soggiorno
+    state: "on"
+
   - name: "Tenda Sinistra"
-    id: "cover.tenda_sinistra"
-    area: "soggiorno"
+    id: cover.tenda_sinistra
+    area: soggiorno
+    state: "aperta"
+    attributes:
+      device_class: curtain
+
+  - name: "Tenda Destra"
+    id: cover.tenda_destra
+    area: soggiorno
+    state: "closed"
+    attributes:
+      device_class: curtain
   - name: "Tapparella"
-    id: "cover.tapparella_bagno"
-    area: "bagno"
+    id: cover.tapparella_bagno
+    area: bagno
+    state: "closed"
+    attributes:
+      device_class: curtain
+  - name: "Garage"
+    id: cover.porta_garage
+    area: garage
+    state: open
+  - name: "Luce Garage"
+    id: light.luce_garage
+    area: garage
+    state: "on"

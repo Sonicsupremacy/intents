@@ -3,5 +3,12 @@ intents:
   HassTurnOff:
     data:
       - sentences:
-          - "apaga <name> <area>"
-          - "desactiva <name> <area>"
+          - <apaga> <name>
+        excludes_context:
+          domain:
+            - binary_sensor
+            - cover
+            - lock
+            - scene
+            - script
+            - sensor

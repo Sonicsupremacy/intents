@@ -3,4 +3,11 @@ intents:
   HassTurnOn:
     data:
       - sentences:
-          - "<deschide> <name>"
+          - "<porneste> <name> [<din_zona>]"
+        excludes_context:
+          domain:
+            - light
+            - cover
+            - scene
+            - script
+            - sensor

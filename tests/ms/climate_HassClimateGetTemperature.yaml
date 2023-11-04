@@ -1,6 +1,12 @@
 language: ms
 tests:
-  - sentences: []
+  - sentences:
+      - berapa suhu sekarang
     intent:
       name: HassClimateGetTemperature
-      slots: {}
+  - sentences:
+      - berapa suhu dapur
+    intent:
+      name: HassClimateGetTemperature
+      slots:
+        area: Dapur

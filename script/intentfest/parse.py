@@ -7,12 +7,20 @@ import sys
 from typing import Any, Dict
 
 import yaml
-from hassil.intents import Intents, SlotList, TextSlotList
+from hassil.intents import Intents
 from hassil.recognize import recognize
-from hassil.util import merge_dict
+from hassil.util import merge_dict, normalize_whitespace
+
+from shared import (
+    get_areas,
+    get_matched_states,
+    get_slot_lists,
+    get_states,
+    render_response,
+)
 
 from .const import LANGUAGES, SENTENCE_DIR, TESTS_DIR
-from .util import get_base_arg_parser
+from .util import get_base_arg_parser, load_merged_responses
 
 
 def get_arguments() -> argparse.Namespace:
@@ -42,16 +50,10 @@ def run() -> int:
     tests_dir = TESTS_DIR / args.language
 
     # Load test areas and entities for language
-    test_names = yaml.safe_load((tests_dir / "_fixtures.yaml").read_text())
-
-    slot_lists: Dict[str, SlotList] = {
-        "area": TextSlotList.from_tuples(
-            (area["name"], area["id"]) for area in test_names["areas"]
-        ),
-        "name": TextSlotList.from_tuples(
-            (entity["name"], entity["id"]) for entity in test_names["entities"]
-        ),
-    }
+    fixtures = yaml.safe_load((tests_dir / "_fixtures.yaml").read_text())
+    slot_lists = get_slot_lists(fixtures)
+    states = get_states(fixtures)
+    areas = get_areas(fixtures)
 
     # Load intents
     intents_dict: Dict[str, Any] = {}
@@ -62,6 +64,10 @@ def run() -> int:
     assert intents_dict, "No intent YAML files loaded"
     intents = Intents.from_dict(intents_dict)
 
+    responses = (
+        load_merged_responses(args.language).get("responses", {}).get("intents", {})
+    )
+
     # Parse sentences
     for sentence in args.sentence:
         result = recognize(sentence, intents, slot_lists=slot_lists)
@@ -71,6 +77,17 @@ def run() -> int:
             output_dict["slots"] = {
                 entity.name: entity.value for entity in result.entities_list
             }
+            output_dict["context"] = result.context
+
+            # Response
+            matched, unmatched = get_matched_states(states, areas, result)
+            output_dict["response_key"] = result.response
+            response_template = responses.get(result.intent.name, {}).get(
+                result.response
+            )
+            output_dict["response"] = normalize_whitespace(
+                render_response(response_template, result, matched, unmatched)
+            ).strip()
 
         json.dump(output_dict, sys.stdout, ensure_ascii=False, indent=2)
         print("")

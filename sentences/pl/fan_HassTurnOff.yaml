@@ -3,8 +3,25 @@ intents:
   HassTurnOff:
     data:
       - sentences:
-          - "<turn_off> (wentylator | [wszystkie] wentylatory) <area>"
-          - "<turn_off> <area> (wentylator | [wszystkie] wentylatory)"
+          - "<turn_off> (wentylator|wiatrak) <area>"
+          - "<turn_off> <area> (wentylator|wiatrak)"
         slots:
           domain: fan
           name: all
+        response: fan_area
+
+      - sentences:
+          - "<turn_off> [<all>] (wentylatory|wiatraki) <area>"
+          - "<turn_off> <area> [<all>] (wentylatory|wiatraki)"
+        slots:
+          domain: fan
+          name: all
+        response: fans_area
+
+      - sentences:
+          - "<turn_off> <all> (wentylatory|wiatraki)"
+        slots:
+          domain: fan
+          name: all
+          area: all
+        response: fans_all

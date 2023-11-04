@@ -1,0 +1,11 @@
+language: cs
+responses:
+  intents:
+    HassTurnOn:
+      default: "Zapnuto"
+      lights_area: "Světla rozsvícena"
+      fans_area: "Větráky zapnuty"
+      fan: "Větrák zapnut"
+      light: "Rozsvíceno"
+      cover: "Otevřeno"
+      garage: "Vrata otevřena"

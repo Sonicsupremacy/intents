@@ -1,0 +1,11 @@
+language: gl
+tests:
+  - sentences:
+      - apaga a lámpada do dormitorio
+      - apaga lámpada do dormitorio
+      - apaga lámpada dormitorio
+    intent:
+      name: HassTurnOff
+      slots:
+        name: Lámpada
+        area: Dormitorio

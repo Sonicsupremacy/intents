@@ -1,0 +1,52 @@
+language: "it"
+tests:
+  - sentences:
+      - "apri la tapparella"
+      - "alza la tapparella"
+    intent:
+      name: HassTurnOn
+      slots:
+        name: "Tapparella"
+      context:
+        domain: cover
+        device_class: curtain
+    response: "Ho aperto tapparella"
+  - sentences:
+      - "apri tutto nel bagno"
+      - "apri il bagno"
+      - "apri in bagno"
+    intent:
+      name: HassTurnOn
+      slots:
+        area: "Bagno"
+        domain: "cover"
+
+    response: "Ho aperto tutto in bagno"
+  - sentences:
+      - "alza tutte le tende"
+    intent:
+      name: HassTurnOn
+      slots:
+        device_class: "curtain"
+        domain: "cover"
+    response: "Ho aperto tutte le tende"
+  - sentences:
+      - "apri le tapparelle nel bagno"
+    intent:
+      name: HassTurnOn
+      slots:
+        area: "Bagno"
+        device_class: "shutter"
+      context:
+        domain: cover
+    response: "Ho aperto le tapparelle in bagno"
+  - sentences:
+      - "apri la porta del garage"
+      - "apri la serranda del garage"
+      - "alza in garage la saracinesca"
+    intent:
+      name: HassTurnOn
+      slots:
+        device_class: garage
+        domain: cover
+    response: "Ho aperto il garage"

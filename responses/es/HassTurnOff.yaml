@@ -1,0 +1,11 @@
+language: es
+responses:
+  intents:
+    HassTurnOff:
+      default: "Dispositivo desconectado"
+      lights_area: "Luces apagadas"
+      fans_area: "Ventiladores apagados"
+      cover: "Cierre completado"
+      light_all: "Todas las luces apagadas"
+      cover_device_class: "Cierre completado"
+      lock: "Apertura completada"

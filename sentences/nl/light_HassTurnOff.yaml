@@ -3,15 +3,26 @@ intents:
   HassTurnOff:
     data:
       - sentences:
-          - "<doe> [alle] <lamp> [<naar>] uit in <area>"
-          - "<doe> [alle] <lamp> in <area> [<naar>] uit"
-          - "<doe> (alle | in) <area> <lamp> [<naar>] uit"
+          - "[<doe>] [<alle>] <lamp> [<naar>] uit <in> <area>"
+          - "<zou> [<alle>] <lamp> [<naar>] (uit willen |uit kunnen |uit[ ])<doe> <in> <area>"
+          - "[<doe>] [<alle>] <lamp> <in> <area> [<naar>] uit"
+          - "<zou> [<alle>] <lamp> <in> <area> [<naar>] (uit willen |uit kunnen |uit[ ])<doe>"
+          - "[<doe>] [(<alle>|<in>)] <area>[ ]<lamp> [<naar>] uit"
+          - "<zou> [(<alle>|<in>)] <area>[ ]<lamp> [<naar>] (uit willen |uit kunnen |uit[ ])<doe>"
+          - "<zou> [(<alle>|<in>)] [<area>[ ]]<lamp> [<in> <area>] [willen|kunnen] (uit[ ](zetten|doen)|uitschakelen)"
+          - "[(<alle>|<in>)] [<area>[ ]]<lamp> [<in> <area>] (uit[ ](zetten|doen)|uitschakelen)"
+        response: "lights_area"
         slots:
-          domain: light
-          name: all
+          domain: "light"
+          name: "all"
+
       - sentences:
-          - "<doe> (overal | alle) <lamp> uit"
-          - "<doe> <lamp> overal uit"
+          - "[<doe>] ((overal|<alle>) <lamp>|<lamp> overal) uit"
+          - "<zou> ((overal|<alle>) <lamp>|<lamp> overal) (uit willen |uit kunnen |uit[ ])<doe>"
+          - "<zou> ((overal|<alle>) <lamp>|<lamp> overal) [willen|kunnen] (uit[ ](zetten|doen)|uitschakelen)"
+          - "((overal|<alle>) <lamp>|<lamp> overal) (uit[ ](zetten|doen)|uitschakelen)"
+        response: "light_all"
         slots:
-          domain: light
-          area: all
+          domain: "light"
+          area: "all"
+          name: "all"

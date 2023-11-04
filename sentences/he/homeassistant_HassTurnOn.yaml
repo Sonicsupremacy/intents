@@ -1,4 +1,4 @@
-language: "he"
+language: he
 intents:
   HassTurnOn:
     data:
@@ -6,3 +6,4 @@ intents:
           - "הדלק [את] [ה]<name>"
           - "הדלקה [של] [ה]<name>"
           - "להדליק [את] [ה]<name>"
+          - "תדליק [את] [ה]<name>"

@@ -1,0 +1,12 @@
+language: gl
+tests:
+  - sentences:
+      - apaga todos os ventiladores do salón
+      - apaga os ventiladores do salón
+      - apaga ventiladores salón
+    intent:
+      name: HassTurnOff
+      slots:
+        area: Salón
+        domain: fan
+        name: all

@@ -1,0 +1,11 @@
+language: sv
+responses:
+  intents:
+    HassTurnOn:
+      default: "Slog på {{ slots.name }}"
+      lights: "Tände {{ slots.name }}"
+      lights_area: "Tände lamporna i {{ slots.area }}"
+      fans_area: "Startade fläktarna i {{ slots.area }}"
+      cover: "Öppnade {{ slots.name }}"
+      cover_area: "Öppnade i {{ slots.area }}"
+      cover_device_class: "Öppnade {{ slots.device_class }}"

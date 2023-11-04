@@ -2,5 +2,4 @@ language: "it"
 responses:
   intents:
     HassClimateGetTemperature:
-      success:
-        - "{{ state.state }} gradi"
+      default: "Ci sono {{ state.state }} gradi"

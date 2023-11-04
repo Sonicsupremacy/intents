@@ -2,5 +2,8 @@ language: sv
 intents:
   HassTurnOff:
     data:
-    - sentences:
-        - "<slå_av> <name>"
+      - sentences:
+          - <slå_av> <name>
+      - sentences:
+          - <stäng_gardiner> <name>
+        response: cover
